@@ -1,0 +1,45 @@
+<navbar></navbar>
+<section id="inner-headline">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <ul class="breadcrumb">
+          <li><a href="#"><i class="fa fa-home"></i></a>&nbsp; / </li>
+          <li><a href="#"> &nbsp;Admin</a>&nbsp; /</li>
+          <li class="active">&nbsp;View Documents</li>
+        </ul>
+
+      </div>
+    </div>
+  </div>
+  <br>
+</section>
+<br>
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="text-primary">Application Documents for {{application.firstName}} {{application.lastName}}</h3>
+          <hr>
+          <div class="list-group">
+            <a [href]="application.fileUrl" target="_blank" class="list-group-item">
+              Download Full Application
+            </a>
+            <a [href]="doc.fileUrl" target="_blank" class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let doc of application.files">
+               {{doc.type}} 
+                <span class="badge badge-primary badge-pill" *ngIf="doc.type=='licenses' || doc.type=='photoID' || doc.type=='bls'">Expires on {{doc.expiryDate}}</span> 
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="">
+
+    </div>
+  </div>
+
+</div>
+

@@ -1,0 +1,112 @@
+
+<navbar></navbar>
+<section id="inner-headline">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <ul class="breadcrumb">
+            <li><a href="#"><i class="fa fa-home"></i></a>&nbsp; / </li>
+            <li><a href="#"> &nbsp;Users</a>&nbsp; /</li>
+            <li class="active">&nbsp;Create Account</li>
+          </ul>
+         
+        </div>
+      </div>
+    </div>
+    <br>
+  </section>
+<div class="container">
+<div class="container">
+<div class="row">
+<div class="col-md-12">
+  <br>
+  <div class="card">
+<div class="card-body">
+<h3 class="text-primary">Register An Account with MedNoc Training College Career Services</h3>
+<p>Register for student account or as a Hiring Company Here</p>
+</div>
+  </div>
+  <br>
+<div class="card" >
+  <div class="card-body">
+<form [formGroup]="formNewUser" (ngSubmit)="registerUser()">
+<div class="row" *ngIf="!submitted">
+  <div class="col-md-6">
+<div class="form-group">
+  <p>First Name</p>
+<input kendoTextBox placeholder="First Name"  formControlName="firstName">
+</div>
+  </div>
+  <div class="col-md-6">
+      <div class="form-group">
+          <p>Last  Name</p>
+      <input kendoTextBox placeholder="Last Name" formControlName="lastName">
+      </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <p>Email Address</p>
+            <input kendoTextBox placeholder="Email Address" formControlName="email">
+            </div>
+              </div>
+              <div class="col-md-6">
+                  <div class="form-group">
+                      <p>Register as a</p>
+                      <kendo-dropdownlist [data]="roles" formControlName="role">
+                        </kendo-dropdownlist>
+                  </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <p>Display Name/Company Name</p>
+                        <input kendoTextBox placeholder="Display Name" formControlName="displayName" >
+                        </div>
+                          </div>
+                          <div class="col-md-6">
+                              <div class="form-group">
+                                  <p>Password</p>
+                              <input kendoTextBox placeholder="Password" type="password" formControlName="password">
+                              </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <p>Confirm Password</p>
+                                    <input kendoTextBox placeholder="Confirm Password" type="password" formControlName="confirmPassword" >
+                                    </div>
+                                      </div>
+                                      <div class="col-md-12" *ngIf="formNewUser.errors">
+                                             <div class="alert alert-danger" *ngIf="formNewUser.errors.invalidform">
+                                                      Please fill all the fields to continue
+                                             </div> 
+                                             <div class="alert alert-danger" *ngIf="formNewUser.errors.password">
+                                                Passwords Must Match
+                                       </div>  
+                                      </div>
+                                      <div class="col-md-12">
+                                          <button class="btn btn-primary btn-lg">Register Account <span class="fa fa-user-plus"></span></button>
+                                          <br><br>
+                                            </div>
+                                            <div class="col-md-12">
+                                              <hr>
+                                              <p>Already have an Account with MedNoc Training College Career Services</p>
+                                                <a class="btn btn-info pull-left" routerLink="/signin">Already Have an Account? Click Here <span class="fa fa-sign-in"></span></a>
+                                                <a class="btn btn-primary pull-right"  routerLink="/forgotpassword"> Forgot your Password <span class="fa fa-key"></span></a>
+                                                  </div>
+                                                  
+        
+
+</div>
+</form>
+<div *ngIf="submitted" class="alert alert-success">
+<h6>You have Registered successfully for an Account</h6>
+<button class="btn btn-info" routerLink="/signin"> Click Here To Sign In</button>
+</div>
+  </div>
+
+</div>
+</div>
+
+</div>
+
+</div>
+</div>

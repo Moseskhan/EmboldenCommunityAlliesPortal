@@ -1,0 +1,87 @@
+<navbar>
+
+  </navbar>
+  <section class="banner_area">
+  
+    <br>
+    <br>
+    <br>
+    <h2 style="color:white">MedNoc Training College Advanced cardiovascular Life Support(ACLS) Jobs and Courses</h2>
+  
+  </section>
+  <section id="inner-headline">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <ul class="breadcrumb">
+            <li>
+              <a routerLink="/">
+                <i class="fa fa-home"></i>
+              </a>&nbsp; / </li>
+            <li>
+              <a routerLink="/"> &nbsp;</a>&nbsp; MTC /</li>
+            <li class="active">&nbsp;ACLS Course and Jobs</li>
+          </ul>
+  
+        </div>
+      </div>
+    </div>
+    <br>
+  </section>
+  
+  
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <br>
+        <div class="card">
+          <div class="card-body">
+            <h3 class="text-primary">Advanced cardiovascular Life Support(ACLS) Jobs and Course</h3>
+            <p>
+                MedNoc Training College ACLS course is a 16 hour instructor- led training. This course is only offered in class where the American Heart Association instructor leads the course throughout the training period. This advanced course highlights the importance of high-performance team dynamics and communication, systems of care, recognition and intervention of cardiopulmonary arrest, immediate post-cardiac arrest, acute dysrhythmia, stroke, and acute coronary syndromes (ACS).
+            </p>
+            <p>
+                Advanced cardiovascular life support (ACLS) training expands on the core ACLS guidelines through cooperative learning to improve outcomes in complex cardiovascular, respiratory and other (e.g., metabolic, toxicological) emergencies. Through instruction and active participation in case-based scenarios, learners enhance their skills in the differential diagnosis and treatment of pre-arrest, arrest and post arrest patients
+             </p>
+  
+  
+          </div>
+  
+        </div>
+      </div>
+      <div class="col-md-6">
+        <br>
+        <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="cna training in Oklahoma City, Mednoc Training College CNA training"
+          src="../assets/ACLS-advanced-cardiac-life-support.jpg" data-holder-rendered="true">
+  
+      </div>
+      
+      <div class="col-md-12">
+        <br>
+  <h3 class="text-primary">AdVanced cardiovascular Life Support(ACLS) Jobs</h3>
+  <hr>
+      </div>
+      <div class="col-md-6" *ngFor="let job of (jobPostsList | async)?.data">
+          <br>
+            <div class="card" >
+                <div class="card-body">
+                  <h5 class="card-title one-line">{{job.jobTitle}}</h5>
+                  <h6 class="card-subtitle mb-2 text-muted">Posted On {{job.date}}</h6>
+                  <p class="card-text one-line">{{job.description}}</p>
+                  <p ><strong>City</strong> <span class="pull-right text-primary">{{job.city}}</span></p>
+                  <p ><strong> Rate/Salary</strong> <span class="pull-right text-primary">{{job.salary}}</span></p>
+                  <p class="text-primary">Posted By {{job.postedBy}}</p>
+                  <button *ngIf="userRole=='student'" class="btn btn-primary btn-sm pull-left"   (click)="applyJob(job.jobID)">Apply this Job</button>
+                  <button *ngIf="userRole=='admin'" class="btn btn-primary btn-sm pull-left"  (click)="open('dialog')"  (click)="deletePost(job)">Delete Post</button>
+                  <a class="btn btn-info btn-sm pull-right"  [routerLink]="['/singlejobs', job.jobID]">Read More <span class="fa fa-arrow-right"></span></a>
+                </div>
+              </div>
+        </div>
+        <div class="col-md-12" *ngIf="(jobPostsList | async)?.data.length==0">
+          <br>
+          <div class="alert alert-warning">No Results found for your Search, Please try another search keyword </div>
+        </div>
+  
+  
+    </div>
+  </div>

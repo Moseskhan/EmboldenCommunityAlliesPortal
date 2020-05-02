@@ -1,0 +1,904 @@
+
+
+
+
+<div >
+
+  <div class="row">
+
+    <div class="col-lg-12 col-sm-12 col-md-12 col-xl-12">
+      <div >
+        <br>
+        <div class="card">
+          <div class="card-body">
+            <form [formGroup]="applyJobForm" (ngSubmit)="applyJob()">
+
+
+
+              <div class="row" *ngIf="!postStatus">
+                <div class="col-md-12">
+
+                  <div class="card">
+                    <div class="card-body">
+                      <h4 class="text-primary"></h4>
+                      <p>Apply for A Home Care Careers </p>
+                      <p>HHA, CNA,RN, LPN</p>
+                    </div>
+
+                  </div>
+                  <hr>
+                  <h4 class="text-primary">Personal Information</h4>
+                </div>
+                <div class="col-md-5">
+                  <div class="form-group">
+                    <p>First Name *</p>
+                    <input kendoTextBox placeholder="First Name"
+                      formControlName="firstName">
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="form-group">
+                    <p>Middle Initial *</p>
+                    <input kendoTextBox placeholder="Middle Initial"
+                      formControlName="middleInitial">
+                  </div>
+                </div>
+                <div class="col-md-5">
+                  <div class="form-group">
+                    <p>Last Name *</p>
+                    <input kendoTextBox placeholder="Last Name"
+                      formControlName="lastName">
+                  </div>
+                </div>
+
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <p>Email Address *</p>
+                    <input kendoTextBox placeholder="Email Address"
+                      formControlName="emailAddress">
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <p>Phone Number *</p>
+                    <input kendoTextBox placeholder="Phone Number"
+                      formControlName="phoneNumber">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <p>Social Security No(SSN) *</p>
+                    <input kendoTextBox placeholder="SSN" formControlName="ssn">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Date of Birth *</label>
+                    <br>
+                    <kendo-datepicker
+                      [format]="'MMM-dd-yyyy '"
+                      formControlName="dob">
+
+                    </kendo-datepicker>
+
+                  </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                      <p> Address *</p>
+                      <input kendoTextBox placeholder="Address"
+                        formControlName="address">
+                    </div>
+                  </div>
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <p>State *</p>
+                    <select class="form-control" [ngClass]="{'invalidInput':
+                      state.touched && state.invalid}" formControlName="state">
+                      <option [value]="state.name" *ngFor="let state of
+                        jsonService.states">
+                        {{state.name}}
+                      </option>
+
+                    </select>
+                  </div>
+                  <p *ngIf="state.touched && state.invalid" class="text-danger">
+                    Please select State </p>
+
+                </div>
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <p>City *</p>
+                    <input kendoTextBox placeholder="City"
+                      formControlName="city">
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <p>Zip *</p>
+                    <input kendoTextBox placeholder="Zip" formControlName="zip">
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <p>Are you legally Legible to work In the US?</p>
+                    <div class="k-form-field">
+                      <input type="radio" class="k-radio" name="legibleToWork"
+                        id="radio1" value="Yes"
+                        formControlName="legibleToWork" />
+                      <label class="k-radio-label" for="radio1">Yes</label>
+                      <input type="radio" class="k-radio" name="legibleToWork"
+                        id="radio2" value="No"
+                        formControlName="legibleToWork" />
+                      <label class="k-radio-label" for="radio2">No</label>
+                    </div>
+
+                  </div>
+                  <p *ngIf="convictedFelony.touched && convictedFelony.invalid"
+                    class="text-danger"> Please select an option </p>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <p>Have You ever been convicted of felony?(Convictions will
+                      not necessarily disqualify an applicant
+                      for employment) *</p>
+                    <div class="k-form-field">
+                      <input type="radio" class="k-radio" name="convictedFelony"
+                        id="radio3" value="Yes"
+                        formControlName="convictedFelony" />
+                      <label class="k-radio-label" for="radio3">Yes</label>
+                      <input type="radio" class="k-radio" name="convictedFelony"
+                        id="radio4" value="No"
+                        formControlName="convictedFelony" />
+                      <label class="k-radio-label" for="radio4">No</label>
+                    </div>
+
+                  </div>
+                  <p *ngIf="convictedFelony.touched && convictedFelony.invalid"
+                    class="text-danger"> Please select an option </p>
+                </div>
+                <div class="col-md-12">
+                  <p>If Yes Explain</p>
+                  <div class="form-group">
+                    <input kendoTextBox placeholder="Explain if yes"
+                      formControlName="felonyExplanation">
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <h3 class="text-primary">Emergency Contact</h3>
+                  <hr>
+                </div>
+                <div class="col-md-12">
+                  <div *ngFor="let contact of emergencyContacts;let i=index"
+                    class="row">
+                    <div class="col-md-12">
+                      <h6 class="text-primary">Emergency Contact #{{i+1}}</h6>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Name</label>
+                        <input kendoTextBox placeholder="Name"
+                          [(ngModel)]="emergencyContacts[i].name"
+                          [ngModelOptions]="{standalone: true}">
+                      </div>
+
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+
+
+                        <label>Phone Number</label>
+                        <input kendoTextBox placeholder="Phone Number"
+                          [(ngModel)]="emergencyContacts[i].phone"
+                          [ngModelOptions]="{standalone: true}">
+                      </div>
+                    </div>
+                    <br>
+                  </div>
+                  <br>
+                  <div class="alert alert-danger" *ngIf="errorWorkHistory">
+                    <p>Emergency Contact Info is not complete. Please fill all
+                      the fields to submit your application.</p>
+                  </div>
+                </div>
+
+
+                <div class="col-md-12">
+                  <hr>
+                  <h3 class="text-primary">Position</h3>
+                  <hr>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <p>Job Type *</p>
+                    <select class="form-control" formControlName="jobType"
+                      [ngClass]="{'invalidInput': jobType.touched &&
+                      jobType.invalid}">
+                      <option value="Travel">
+                        Travel
+                      </option>
+                      <option value="Local Contract">
+                        Local Contract
+                      </option>
+                      <option value="Per Diem">
+                        Per Diem
+                      </option>
+                      <option value="Perm">
+                        Perm
+                      </option>
+                    </select>
+                  </div>
+                  <p *ngIf="jobType.touched && jobType.invalid"
+                    class="text-danger"> Please select job type </p>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <p>What is your Proffession *</p>
+                    <select class="form-control" formControlName="proffession"
+                      [ngClass]="{'invalidInput': proffession.touched &&
+                      proffession.invalid}">
+                      <option selected="selected" value="">Select Profession</option>
+                      
+                      
+
+                      
+
+                     
+
+
+                      <option value="CNA"> CNA </option>
+
+
+                      
+
+
+                      
+
+                      <option value="HHA"> HHA </option>
+
+
+                    
+
+
+                      <option value="LPN/LVN"> LPN/LVN </option>
+
+
+                      
+
+
+                      
+
+
+                     
+
+
+                      <option value="RN"> RN </option>
+
+
+                    
+                      
+
+                    </select>
+
+                  </div>
+                  <p *ngIf="proffession.touched && proffession.invalid"
+                    class="text-danger"> Please select your proffession </p>
+                </div>
+                <div class="col-md-12">
+                  <label>Desired Shift * </label>
+                  <p>You can select Multiple shift types</p>
+                  <div class="row container">
+                    <div class="col-md-2">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox"
+                          id="defaultCheck1" [(ngModel)]="shift.hour8"
+                          [ngModelOptions]="{standalone: true}">
+                        <label class="form-check-label" for="defaultCheck1">
+                          8 Hr Shift
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-md-2">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox"
+                          id="defaultCheck1" [(ngModel)]="shift.hour12"
+                          [ngModelOptions]="{standalone: true}">
+                        <label class="form-check-label" for="defaultCheck1">
+                          12 Hr Shift
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-md-2">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox"
+                          id="defaultCheck1" [(ngModel)]="shift.night"
+                          [ngModelOptions]="{standalone: true}">
+                        <label class="form-check-label" for="defaultCheck1">
+                          Night Shift
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-md-2">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox"
+                          id="defaultCheck1" [(ngModel)]="shift.day"
+                          [ngModelOptions]="{standalone: true}">
+                        <label class="form-check-label" for="defaultCheck1">
+                          Day Shift
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-md-2">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox"
+                          id="defaultCheck1" [(ngModel)]="shift.weekend"
+                          [ngModelOptions]="{standalone: true}">
+                        <label class="form-check-label" for="defaultCheck1">
+                          Weekend Shift
+                        </label>
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <br>
+                  <div class="alert alert-danger" *ngIf="errorShifts">
+                    <p>Select atleast one shift type. </p>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Date you can Start Work</label><br>
+                    <kendo-datepicker
+                      [format]="'MMM-dd-yyyy '"
+                      formControlName="startWorkingDate">
+
+                    </kendo-datepicker>
+
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <p>Employment Desired *</p>
+                    <div class="k-form-field">
+                      <input type="radio" class="k-radio"
+                        name="desiredEmployment" id="radio6" value="Full Time"
+                        formControlName="desiredEmployment" />
+                      <label class="k-radio-label" for="radio6">Full Time</label>
+                      <input type="radio" class="k-radio"
+                        name="desiredEmployment" id="radio7" value="Part Time"
+                        formControlName="desiredEmployment" />
+                      <label class="k-radio-label" for="radio7">Part Time</label>
+                      <input type="radio" class="k-radio"
+                        name="desiredEmployment" id="radio8" value="Temporary"
+                        formControlName="desiredEmployment" />
+                      <label class="k-radio-label" for="radio8">Temporary</label>
+                    </div>
+
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <hr>
+                  <h3 class="text-primary">
+                    Qualifications
+                  </h3>
+                  <hr>
+                </div>
+                <div class="col-md-12">
+                  <div class="row" *ngFor="let education of educationHistory;let
+                    i=index">
+                    <div class="col-md-12">
+                      <h6 class="text-primary"> Qualification #{{i+1}}</h6>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+
+
+                        <label>School Name</label>
+                        <input kendoTextBox placeholder="School Name"
+                          [(ngModel)]="educationHistory[i].school"
+                          [ngModelOptions]="{standalone: true}">
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+
+
+                        <label>Degree</label>
+                        <input kendoTextBox placeholder="Degree"
+                          [(ngModel)]="educationHistory[i].degree"
+                          [ngModelOptions]="{standalone: true}">
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+
+
+                        <label>Location</label>
+                        <input kendoTextBox placeholder="Location"
+                          [(ngModel)]="educationHistory[i].location"
+                          [ngModelOptions]="{standalone: true}">
+                      </div>
+                    </div>
+                    <div class="col-md-1">
+                      <br>
+                      <span class="fa fa-remove fa-2x" *ngIf="i>1"
+                        (click)="removeSchool(education)" style="color: red"></span>
+                    </div>
+
+                  </div>
+                  <br>
+                  <div class="alert alert-danger" *ngIf="errorQualifications">
+                    <p>Qualifications are not complete. Please fill all the
+                      fields to submit your application.</p>
+                  </div>
+                  <br>
+                  <button class="btn btn-primary" (click)="addSchool()"
+                    type="button"> Add Another School <span
+                      class="fa fa-plus-circle"></span></button>
+                </div>
+                <div class="col-md-12">
+                  <hr>
+                  <h3 class="text-primary">
+                    Special Skills
+                  </h3>
+                  <p>List any Special Skills you feel would help you in the
+                    position you are applying.</p>
+                  <hr>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <textarea kendoTextArea formControlName="specialSkills"></textarea>
+                  </div>
+
+                </div>
+                <div class="col-md-12">
+                  <hr>
+                  <h3 class="text-primary">
+                    References
+                  </h3>
+                  <hr>
+                </div>
+                <div class="col-md-12">
+                  <div class="row" *ngFor="let ref of references; let i=index">
+                    <div class="col-md-12">
+                      <h6 class="text-primary">Reference #{{i+1}}</h6>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+
+
+                        <label> Name</label>
+                        <input kendoTextBox placeholder="Name"
+                          [(ngModel)]="references[i].name"
+                          [ngModelOptions]="{standalone: true}">
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+
+
+                        <label>Location(Address,city,state)</label>
+                        <input kendoTextBox placeholder="Location"
+                          [(ngModel)]="references[i].location"
+                          [ngModelOptions]="{standalone: true}">
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+
+
+                        <label>Phone Number</label>
+                        <input kendoTextBox placeholder="Phone Number"
+                          [(ngModel)]="references[i].phone"
+                          [ngModelOptions]="{standalone: true}">
+                      </div>
+                    </div>
+                    <div class="col-md-2">
+                      <div class="form-group">
+
+
+                        <label>Relationship</label>
+                        <input kendoTextBox placeholder="Relationship"
+                          [(ngModel)]="references[i].relationship"
+                          [ngModelOptions]="{standalone: true}">
+                      </div>
+                    </div>
+                    <div class="col-md-1">
+                      <br>
+                      <span class="fa fa-remove fa-2x" *ngIf="i>1"
+                        (click)="removeRef(ref)" style="color: red"></span>
+                    </div>
+
+                  </div>
+                  <br>
+                  <div class="alert alert-danger" *ngIf="errorReferences">
+                    <p>References are not complete. Please fill all the fields
+                      to submit your application.</p>
+                  </div>
+                  <br>
+                  <button class="btn btn-primary" (click)="addRef()"
+                    type="button"> Add Another Reference <span
+                      class="fa fa-plus-circle"></span></button>
+                </div>
+                <div class="col-md-12">
+                  <hr>
+                  <h3 class="text-primary">
+                    Work History
+                  </h3>
+                  <hr>
+                </div>
+                <div class="col-md-12">
+                  <div class="card" *ngFor="let history of employmentHistory;
+                    let i=index">
+                    <div class="card-body">
+                      <h6 class="text-primary">Work History #{{i+1}}</h6>
+                      <button class="btn btn-danger"
+                        (click)="removeWorkHistory(history)" *ngIf="i>1"
+                        type="button"> Remove Work History <span
+                          class="fa fa-remove"></span></button>
+                      <br>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group">
+
+
+                            <label> Company Name</label>
+                            <input kendoTextBox placeholder="Name"
+                              [(ngModel)]="employmentHistory[i].companyName"
+                              [ngModelOptions]="{standalone: true}">
+                          </div>
+                        </div>
+                        <div class="col-md-3">
+                          <div class="form-group">
+
+
+                            <label>Start Date</label>
+                            <input kendoTextBox placeholder="Start Date"
+                              [(ngModel)]="employmentHistory[i].startDate"
+                              [ngModelOptions]="{standalone: true}">
+                          </div>
+                        </div>
+                        <div class="col-md-3">
+                          <div class="form-group">
+
+
+                            <label>End Date</label>
+                            <input kendoTextBox placeholder="End Date"
+                              [(ngModel)]="employmentHistory[i].endDate"
+                              [ngModelOptions]="{standalone: true}">
+                          </div>
+                        </div>
+                        <div class="col-md-4">
+                          <div class="form-group">
+
+
+                            <label>City</label>
+                            <input kendoTextBox placeholder="City"
+                              [(ngModel)]="employmentHistory[i].city"
+                              [ngModelOptions]="{standalone: true}">
+                          </div>
+                        </div>
+                        <div class="col-md-4">
+                          <div class="form-group">
+
+
+                            <label>State</label>
+                            <select class="form-control"  [(ngModel)]="employmentHistory[i].state"
+                            [ngModelOptions]="{standalone: true}">
+                      <option [value]="state.name" *ngFor="let state of
+                        jsonService.states">
+                        {{state.name}}
+                      </option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-md-4">
+                          <div class="form-group">
+
+
+                            <label>Zip</label>
+                            <input kendoTextBox placeholder="Zip"
+                              [(ngModel)]="employmentHistory[i].zip"
+                              [ngModelOptions]="{standalone: true}">
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+
+
+                            <label>Supervisor</label>
+                            <input kendoTextBox placeholder="Supervisor Name"
+                              [(ngModel)]="employmentHistory[i].supervisorsName"
+                              [ngModelOptions]="{standalone: true}">
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+
+
+                            <label>Phone Number</label>
+                            <input kendoTextBox placeholder="Phone Number"
+                              [(ngModel)]="employmentHistory[i].phoneNumber"
+                              [ngModelOptions]="{standalone: true}">
+                          </div>
+                        </div>
+                        <div class="col-md-12">
+
+                          <div class="form-group">
+                            <label>Duties </label>
+                            <textarea kendoTextArea
+                              [(ngModel)]="employmentHistory[i].duties"
+                              [ngModelOptions]="{standalone: true}"></textarea>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <label>Reasons for Leaving</label>
+                          <div class="form-group">
+                            <input kendoTextBox placeholder="reasons for
+                              leaving"
+                              [(ngModel)]="employmentHistory[i].reasonsForLeaving"
+                              [ngModelOptions]="{standalone: true}">
+
+                          </div>
+                        </div>
+                        <div class="col-md-3">
+                          <div class="form-group">
+                            <label>Start Salary</label>
+                            <input kendoTextBox placeholder="Start Salary"
+                              [(ngModel)]="employmentHistory[i].startSalary"
+                              [ngModelOptions]="{standalone: true}">
+                          </div>
+
+                        </div>
+                        <div class="col-md-3">
+                          <div class="form-group">
+                            <label>End Salary</label>
+                            <input kendoTextBox placeholder="End Salary"
+                              [(ngModel)]="employmentHistory[i].endSalary"
+                              [ngModelOptions]="{standalone: true}">
+                          </div>
+
+                        </div>
+
+
+                      </div>
+
+                    </div>
+
+                  </div>
+                  <br>
+                  <div class="alert alert-danger" *ngIf="errorWorkHistory">
+                    <p>Work History is not complete. Please fill all the fields
+                      to submit your application.</p>
+                  </div>
+                  <br>
+                  <button class="btn btn-primary"(click)="addWorkHistory()"
+                    type="button"> Add Another Work History <span
+                      class="fa fa-plus-circle"></span></button>
+
+                </div>
+                <div class="col-md-12">
+                  <br>
+                  <h3>
+                    Upload Documents
+                  </h3>
+                  <hr>
+
+
+                </div>
+                <div class="col-md-12">
+                  <div class="row" *ngFor="let certification of
+                    this.certificationfiles;let i=index"
+                    >
+                    <div class="col-md-6" *ngIf="certification.type=='resume'">
+                      <div class="form-group">
+                        <label>Upload Resume *</label>
+                        <input type="file" class="form-control"
+                          (change)="handleFileInput($event.target.files, certification)">
+                      </div>
+                    </div>
+                    <div class="col-md-6" *ngIf="certification.type=='resume'">
+                      <br>
+                        <p *ngIf="certification.isUploading">Uploading Files.............</p>
+                        <a *ngIf="certification.isUploadComplete" target="_blank" [href]="certification.fileUrl">{{certification.fileName}} <span class="fa fa-check" style="color: green"></span></a>
+                  
+                    </div>
+
+                  </div>
+
+
+                </div>
+                <div class="col-md-12">
+                  <div class="row" *ngFor="let certification of
+                    this.certificationfiles;let i=index"
+                   >
+                    <div class="col-md-4" *ngIf="certification.type=='photoID'">
+                      <div class="form-group">
+                        <label>Upload Photo ID *</label>
+                        <input type="file" class="form-control"
+                          (change)="handleFileInput($event.target.files, certification)">
+                      </div>
+                    </div>
+                    <div class="col-md-4" *ngIf="certification.type=='photoID'">
+                        <label>Expiry Date *</label>
+                        <input type="date" class="form-control" required
+                          [(ngModel)]="certificationfiles[i].expiryDate"
+                          [ngModelOptions]="{standalone: true}">
+                      </div>
+                    <div class="col-md-4" *ngIf="certification.type=='photoID'">
+                      <br>
+                        <p *ngIf="certification.isUploading">Uploading Files...................</p>
+                        <a *ngIf="certification.isUploadComplete" target="_blank" [href]="certification.fileUrl">{{certification.fileName}} <span class="fa fa-check" style="color: green"></span></a>
+                  
+                    </div>
+
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="row" *ngFor="let certification of
+                    this.certificationfiles;let i=index"
+                   >
+                    <div class="col-md-6" *ngIf="certification.type=='ssn'">
+                      <div class="form-group">
+                        <label>Upload a Copy of SSN</label>
+                        <input type="file" class="form-control"
+                          (change)="handleFileInput($event.target.files, certification)">
+                      </div>
+                    </div>
+                    <div class="col-md-6" *ngIf="certification.type=='ssn'">
+                      <br>
+                      <p *ngIf="certification.isUploading">Uploading Files...........</p>
+                      <a *ngIf="certification.isUploadComplete" target="_blank"
+                        [href]="certification.fileUrl">{{certification.fileName}}
+                        <span class="fa fa-check" style="color: green"></span></a>
+                    </div>
+
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <label>Upload Licenses/Certifications *</label>
+                  <div class="row" *ngFor="let certification of
+                    this.certificationfiles;let i=index"
+                    >
+                    <div class="col-md-4" *ngIf="certification.type=='licenses'">
+                      <div class="form-group">
+                        <label>Select File</label>
+                        <input type="file" class="form-control"
+                          (change)="handleFileInput($event.target.files,certification )">
+                      </div>
+                    </div>
+                    <div class="col-md-4" *ngIf="certification.type=='licenses'">
+                      <label>Expiry Date *</label>
+                      <input type="date" class="form-control" required
+                        [(ngModel)]="certificationfiles[i].expiryDate"
+                        [ngModelOptions]="{standalone: true}">
+                    </div>
+                    <div class="col-md-4" *ngIf="certification.type=='licenses'">
+                      <br>
+                      <p *ngIf="certification.isUploading">Uploading Files.......</p>
+                      <a *ngIf="certification.isUploadComplete" target="_blank"
+                        [href]="certification.fileUrl">{{certification.fileName}}
+                        <span class="fa fa-check" style="color: green"></span></a>
+                    </div>
+
+                  </div>
+                  <br>
+                  <button type="button" class="btn btn-primary"
+                    (click)="addCertification()">Add Another Certification <span
+                      class="fa fa-plus-circle"></span></button>
+                  <br>
+                  <br>
+                </div>
+                <div class="col-md-12">
+                  <div class="row" *ngFor="let certification of
+                    this.certificationfiles;let i=index"
+                   >
+                    <div class="col-md-4"  *ngIf="certification.type=='bls'">
+                      <div class="form-group">
+                        <label>Upload BLS Certificate *</label>
+                        <input type="file" class="form-control"
+                          (change)="handleFileInput($event.target.files, certification)">
+                      </div>
+                    </div>
+                    <div class="col-md-4" *ngIf="certification.type=='bls'">
+                        <label>Expiry Date *</label>
+                        <input type="date" class="form-control" required
+                          [(ngModel)]="certificationfiles[i].expiryDate"
+                          [ngModelOptions]="{standalone: true}">
+                      </div>
+                    <div class="col-md-4"  *ngIf="certification.type=='bls'">
+                      <br>
+                        <p *ngIf="certification.isUploading">Uploading Files.......</p>
+                        <a *ngIf="certification.isUploadComplete" target="_blank" [href]="certification.fileUrl">{{certification.fileName}} <span class="fa fa-check" style="color: green"></span></a>
+                  
+                    </div>
+                    
+                  </div>
+                </div>
+                <div class="col-md-12">
+                    <br>
+                    <div class="alert alert-danger" *ngIf="errorFiles">
+                      <p>Upload all the required files to continue.</p>
+                    </div>
+                    <br>
+                </div>
+                <div class="col-md-12">
+
+                  <div class="k-form-field">
+                    <input type="checkbox" id="ch1" class="k-checkbox" />
+                    <label class="k-checkbox-label" for="ch1"> I certify that
+                      the facts set forth in this application for Employment are
+                      and complete to the best of my knowledge. I understand
+                      that if I am employed, false statements, omissions or
+                      misinterpretations may result in my dismissal. I authorize
+                      the Employer to make an investigation of any of the facts
+                      set forth in this application and release the employer any
+                      liability. The Employer may contact any listed references
+                      on this application.
+                      <br>
+                      I acknowledge and understand that the company is an "at
+                      will " employer. Therefore , any employee (regular,
+                      temporary , or othert type of category emaployee) may
+                      resign at any time, just as the employer may terminate the
+                      employment relationship with any employee at any time,
+                      with or without cause, with or without notice to the other
+                      party.
+                    </label>
+                  </div>
+
+                </div>
+                <div class="col-md-12">
+                  <br>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="">Applicant Initials</label>
+                    <input kendoTextBox placeholder="Your Initials"
+                      formControlName="initials">
+                  </div>
+
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="">Date</label>
+                    <br>
+                    <kendo-datepicker
+                      [format]="'MMM-dd-yyyy '"
+                      formControlName="signingDate">
+
+                    </kendo-datepicker>
+                  </div>
+
+                </div>
+                <div class="col-md-12">
+                  <hr>
+                  <div class="alert alert-danger" *ngIf="formError">
+                    Please fill all the fields here to continue with your
+                    application.
+                  </div>
+                  <br>
+                  <button class="btn btn-primary">
+                    Submit Application
+                  </button>
+
+                </div>
+
+
+              </div>
+              <div class="card" *ngIf="postStatus">
+                <div class="card-body">
+                  <p>Your Application was successfully Received. We will get back to you soon. </p>
+                  
+                </div>
+
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

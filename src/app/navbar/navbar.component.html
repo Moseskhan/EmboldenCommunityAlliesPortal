@@ -1,0 +1,227 @@
+<header>
+  
+<div class="top">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <ul class="topleft-info">
+            <li><a href="tel:+1 (405) 225-7876"><strong  style="font-size: 15px; color: green"><i class="fa fa-phone" style=""></i> +1 (405) 225-7876</strong></a></li>
+            <li><a href="mailto:info@mednoc.com"><strong  style="font-size: 15px; color: green"><i class="fa fa-envelope"></i>info@mednoc.com</strong></a></li>
+            
+          </ul>
+        </div>
+        <div class="col-md-6">
+          <div id="sb-search" class="sb-search pull-right" style="color: white">
+              <a class="fa fa-facebook" href="https://www.facebook.com/MedNoc/"></a>
+              <a class="fa fa-twitter" href="https://twitter.com/mednoccollege?lang=en"></a>
+              <a class="fa fa-instagram" href="https://www.instagram.com/in.fo628/"></a>
+              <a class="fa fa-google" href="https://plus.google.com/share?app=110&url=https%3A%2F%2Fmednochealthcareertrainingcoursesok.com%2F"></a>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<div *ngIf="role=='admin'">
+  
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <a class="navbar-brand" href="#"><img src="../../assets/MTC-Logo.jpg" class="img-fluid img-thumbnail" style="height: 80px"></a>
+        
+          <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+              <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+              <li class="nav-item active">
+                <a class="nav-link" routerLink="/admindashboard">DashBoard <span class="sr-only">(current)</span></a>
+              </li>
+           <!--<li class="nav-item">
+                <a class="nav-link" routerLink="/adminusers">Users</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/courses">Course Schedules</a>
+              </li>-->
+              <li class="nav-item">
+                  <a class="nav-link" routerLink="/static/applications">Job Applications</a>
+              </li>
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Job Posts
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" routerLink="/postjobs">Add a Job Post</a>
+                    <a class="dropdown-item" routerLink="/viewjobs">View Job Posts</a>
+                    
+                  </div>
+                </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/hirerprofile">Admin Profile</a>
+              </li>
+              
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <button class="btn btn-primary my-2 my-sm-0" type="button" (click)="logOut()">Log Out</button>
+            </form>
+          </div>
+        </nav>
+</div>
+<div  *ngIf="role=='student'">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary ">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="#"><img src="../../assets/MTC-Logo.jpg" class="img-fluid img-thumbnail" style="height: 80px"></a>
+        
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+              <a class="nav-link" routerLink="/studentdashboard">DashBoard <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/viewjobs">Recent Jobs</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/jobapplications">My Job Applications</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/viewjobs">All Posted Jobs</a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link" routerLink="/jobseekers">Students/Job Seekers</a>
+            </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                 MTC Courses and Careers
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" routerLink="/hha-jobs-and-courses-in-Oklahoma" >HHA jobs and Course</a>
+                  <a class="dropdown-item" routerLink="/cna-jobs-and-courses-in-oklahoma" >CNA jobs and Courses</a>
+                  <a class="dropdown-item" routerLink="/medication-administration-jobs-and-courses-in-Oklahoma" >Medical Administration Jobs and Courses</a>
+                  <a class="dropdown-item" routerLink="/Phlebotomy-Technician-jobs-and-courses-in-oklahoma" > Phlebotomy Technician Jobs and Courses </a>
+                  <a class="dropdown-item" routerLink="/Pharmacy-Technician-jobs-and-courses-in-oklahoma" >Pharmacy Technician jobs and Courses</a>
+                  <a class="dropdown-item" routerLink="/CMA-jobs-and-courses-in-oklahoma">CMA jobs and Courses</a>
+                  <a class="dropdown-item" routerLink="/ACLS-jobs-and-courses-in-oklahoma">ACLS jobs and Courses</a>
+                  <a class="dropdown-item" routerLink="/BLS-jobs-and-courses-in-oklahoma">Basic Life Support jobs and Courses</a>
+
+                </div>
+              </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  My Profile
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item"  [routerLink]="['/studentprofile',userID,'update']" >Update Profile</a>
+                  <a class="dropdown-item"  [routerLink]="['/studentprofile',userID,'view']" >View My Profile</a>
+                  
+                </div>
+              </li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            
+            <button class="btn btn-primary my-2 my-sm-0" type="button" (click)="logOut()">Log Out</button>
+          </form>
+        </div>
+      </nav>  
+</div>
+<div  *ngIf="role=='hirer'">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary ">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="#"><img src="../../assets/MTC-Logo.jpg" class="img-fluid img-thumbnail" style="height: 80px"></a>
+        
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+              <a class="nav-link" routerLink="/hirerdashboard">DashBoard <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/postjobs">Post a Job</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/applications">Job Applications</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/myposts">My Job Posts</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/hire-cna-hha">Employers</a>
+            </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                 MTC Courses and Careers
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" routerLink="/hha-jobs-and-courses-in-Oklahoma" >HHA jobs and Course</a>
+                  <a class="dropdown-item" routerLink="/cna-jobs-and-courses-in-oklahoma" >CNA jobs and Courses</a>
+                  <a class="dropdown-item" routerLink="/medication-administration-jobs-and-courses-in-Oklahoma" >Medical Administration Jobs and Courses</a>
+                  <a class="dropdown-item" routerLink="/Phlebotomy-Technician-jobs-and-courses-in-oklahoma" > Phlebotomy Technician Jobs and Courses </a>
+                  <a class="dropdown-item" routerLink="/Pharmacy-Technician-jobs-and-courses-in-oklahoma" >Pharmacy Technician jobs and Courses</a>
+                  <a class="dropdown-item" routerLink="/CMA-jobs-and-courses-in-oklahoma">CMA jobs and Courses</a>
+                  <a class="dropdown-item" routerLink="/ACLS-jobs-and-courses-in-oklahoma">ACLS jobs and Courses</a>
+                  <a class="dropdown-item" routerLink="/BLS-jobs-and-courses-in-oklahoma">Basic Life Support jobs and Courses</a>
+
+                </div>
+              </li>
+            
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/hirerprofile">Company Profile</a>
+              </li>
+           
+            
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            
+            <button class="btn btn-primary my-2 my-sm-0" type="button" (click)="logOut()">Log Out</button>
+          </form>
+        </div>
+      </nav>  
+  </div>
+
+  <div  *ngIf="!role">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <a class="navbar-brand" routerLink="/"><img src="../../assets/MTC-Logo.jpg" class="img-fluid img-thumbnail" style="height: 80px"></a>
+      
+          <div class="collapse navbar-collapse offcanvas-collapse" id="navbarTogglerDemo01">
+                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item active">
+                        <a class="nav-link" routerLink="/"><span></span>Home</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" routerLink="/new/application">Apply Now</a>
+                    </li>
+              <li class="nav-item">
+                  <a class="nav-link" routerLink="/recentjobs">Recent Jobs</a>
+              </li>
+              <li class="nav-item ">
+                  <a class="nav-link" routerLink="/viewjobs">Available Jobs</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" routerLink="/hire-cna-hha">Employers</a>
+              </li>
+              <li class="nav-item ">
+                  <a class="nav-link" routerLink="/jobseekers">Job Seekers</a>
+              </li>
+              <li class="nav-item ">
+                  <a class="nav-link" routerLink="/contact">Contact Us</a>
+              </li>
+             
+             
+               
+                         </ul>
+            <form class="form-inline my-2 my-lg-0">
+              
+              <a class="btn btn-primary"  routerLink="/signin">Login</a>
+            </form>
+          </div>
+        </nav>  
+    </div>
+
+
+  </header>

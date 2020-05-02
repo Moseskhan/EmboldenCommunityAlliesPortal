@@ -1,0 +1,125 @@
+
+<navbar></navbar>
+<section id="inner-headline">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <ul class="breadcrumb">
+                <li><a routerLink="/"><i class="fa fa-home"></i></a>&nbsp; / </li>
+                <li><a routerLink="/"> &nbsp;</a>&nbsp; Admin /</li>
+                <li class="active">&nbsp; View and Edit Users</li>
+              </ul>
+             
+            </div>
+          </div>
+        </div>
+        <br>
+      </section>
+<br>
+<div class="container">
+    <div class="row">
+        
+        <div class="col-lg-8 col-sm-9 col-md-8  col-xl-9">
+       
+<div class="card">
+  <div class="card-body">
+      <h3 class="text-primary">List of Users</h3>
+      <form class="form-inline pull-right">
+          <div class="form-group mb-2">
+<label>Filter By: </label>
+              <kendo-dropdownlist [data]="selectType" #type class="pull-right">
+                </kendo-dropdownlist>
+          </div>
+          <div class="form-group mx-sm-3 mb-2">
+             
+              <input kendoTextBox #search (keyup.enter)="searchUsers(search,type)" class="pull-right" placeholder="Search Users Here">
+                
+            </div>
+            <div class="form-group mx-sm-3 mb-2">
+             
+                    <button class="btn btn-info" (click)="searchUsers(search,type)">
+                                       Search
+                    </button> 
+                  </div>
+      </form>
+      
+     
+  </div>
+</div>
+<div class="card">
+<div class="card-body">
+        <div class="alert alert-danger" *ngIf="searchErrors">
+                Specify all search Parameters
+                  </div>
+
+          
+          <table class="table table-responsive table-fluid table-bordered" style="width:100%">
+<thead>
+<th>
+Full Name
+</th>
+<th>
+Display Name
+</th>
+<th>
+Email Address
+</th>
+
+<th>
+Role
+</th>
+<th>
+  
+</th>
+<th>
+  
+  </th>
+</thead>
+<tbody>
+<tr *ngFor="let user of (allUsers | async)?.data">
+  <td>
+    {{user.firstName}} {{user.lastName}}
+  </td>
+  <td>
+    {{user.displayName}}
+    </td>
+    <td>
+        {{user.emailAddress}}
+      </td>
+      <td>
+    {{user.role}}
+        </td>
+        <td>
+          <button class="btn btn-primary" kendoButton (click)="deleteAccount(user.id, user.displayName) " [icon]="'close-outline'" class="btn btn-danger "  (click)="open('dialog')">Delete Account</button>
+        </td>
+        <td>
+            <button class="btn btn-primary" kendoButton (click)="verifyAccount(user.id,button)"  *ngIf="user.verifiedAccount==false" #button >Verify Account</button>
+            <button class="btn btn-primary" kendoButton   *ngIf="user.verifiedAccount==true">Account is Verified</button> 
+        </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<kendo-dialog title="Please confirm" *ngIf="dialogOpened" (close)="close('dialog')" [minWidth]="250" [width]="450">
+    <div *ngIf="!deletedStatus">
+        <p style="margin: 30px; text-align: center;" >Are you sure you want to delete  {{currentUser.name}} ?</p>
+
+        <kendo-dialog-actions>
+            <button kendoButton (click)="deleteOptions(0,'dialog')">No</button>
+            <button kendoButton (click)="deleteOptions(1,'dialog')" primary="true">Yes</button>
+        </kendo-dialog-actions>
+    </div>
+    <div *ngIf="deletedStatus" class="alert alert-sucess">
+        <h6>{{currentUser.name}} was deleted successfully</h6>
+    </div>
+    
+</kendo-dialog> 
+
+
+        </div>
+        <div class="col-lg-4 col-sm-3 col-md-4  col-xl-3">
+                <br>
+            
+               
+            </div>
+      </div>

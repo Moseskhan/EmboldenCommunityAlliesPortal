@@ -1,0 +1,106 @@
+<navbar></navbar>
+<section id="inner-headline">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <ul class="breadcrumb">
+            <li><a routerLink="/"><i class="fa fa-home"></i></a>&nbsp; / </li>
+            <li><a routerLink="/"> &nbsp;</a>&nbsp; Jobs /</li>
+            <li class="active">&nbsp; View Job Application</li>
+          </ul>
+         
+        </div>
+      </div>
+    </div>
+    <br>
+  </section>
+<br><br>
+<div class="container">
+    <div class="row">
+       
+        <div class="col-lg-8 col-sm-9 col-md-8  col-xl-9">
+            
+<div class="card">
+  <div class="card-body">
+      
+
+            <div class="row featurette">
+              <div class="col-md-12">
+                <h2 class="featurette-heading text-primary">{{(applicationInfo | async)?.data.jobTitle}}</h2>
+                <hr class="style-seven">
+                <span class="pull-right badge badge-info">Applied on {{(applicationInfo | async)?.data.date}}</span>
+                <br>
+                <p [innerHTML]="(applicationInfo | async)?.data.coverLetter | nl2br"></p>
+              </div>
+              
+              
+            </div>
+             <div *ngFor="let job of (applicationInfo | async)?.data.jobInfo ">
+                <hr class="featurette-divider">
+                <div class="row featurette">
+                    <div class="col-md-12">
+                      <h5 class="text-primary">Employer Contacts and Job Details</h5>
+                      <hr class="style-seven">
+                      <nav>
+                          <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Employer Contact Info</a>
+                            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Job Details</a>
+                               </div>
+                        </nav>
+                        <div class="tab-content" id="nav-tabContent">
+                          <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" >
+                              <br>
+                              <div *ngFor="let contact of job.HirerInfo" >
+                                <p>If the employer has not contacted you, regarding this position. Contact them directly.</p>
+                                <div class="list-group">
+                                  <a class="list-group-item">{{contact.pointOfContact}} <span class="fa fa-user  pull-right text-info"></span></a>
+                                  <a class="list-group-item">{{contact.CellPhone}} <span class="fa fa-phone  pull-right text-info"></span></a>
+                                  <a class="list-group-item">{{contact.emailAddress}} <span class="fa fa-envelope  pull-right text-info"></span></a>
+                                  <a class="list-group-item">{{contact.address}},{{contact.city}},{{contact.state}},USA <span class="fa fa-map-marker  pull-right text-info"></span></a>
+  
+                                </div>
+                              </div>
+                             
+                              <div  *ngIf="job.HirerInfo.length==0" class="alert alert-warning">
+                                <p>
+                                 Employer has not provided their Contact Details, Please wait for them to contact you.
+                                </p>
+    
+                              </div>
+                          </div>
+                         
+                          <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab"><br>
+                            <br>
+                              <p  [innerHTML]="job.description | nl2br"></p>
+                              <span *ngFor="let nature of job.natureOfJob"> <span class="badge badge-secondary" >{{nature.description | nl2br}}</span>&nbsp;</span>
+                              <span  *ngFor="let certification of job.certifications">  <span class="badge badge-secondary">{{certification.description}}</span></span>
+                             <br> <a class="btn btn-info rounded-2x btn-sm pull-right" [routerLink]="['/singlejobs',job.jobID]">Read More</a>
+                       
+
+                          </div>
+                          
+                        </div>
+                            </div>
+                            
+                    
+                  </div> 
+            
+            
+           
+            
+            </div>
+            <hr class="featurette-divider">
+  </div>
+</div>
+
+        </div>
+        <div class="col-lg-4 col-sm-3 col-md-4  col-xl-3">
+            <br>
+       
+           
+        </div>
+  
+      </div>
+
+    
+    </div>

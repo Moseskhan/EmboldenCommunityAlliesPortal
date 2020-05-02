@@ -1,0 +1,100 @@
+<navbar></navbar>
+<section id="inner-headline">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <ul class="breadcrumb">
+          <li><a href="#"><i class="fa fa-home"></i></a>&nbsp; / </li>
+          <li><a href="#"> &nbsp;Admin</a>&nbsp; /</li>
+          <li class="active">&nbsp;View Job Applications</li>
+        </ul>
+
+      </div>
+    </div>
+  </div>
+  <br>
+</section>
+<br>
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body">
+          <table class="table table-responsive" style="font-size: smaller">
+            <thead>
+              <tr>
+
+
+                <th>
+                  Name
+                </th>
+                <th>
+                  Phone 
+                </th>
+                <th>
+                  Email
+                </th>
+                <th>
+                  Proffession
+                </th>
+                <th>
+                  Type
+                </th>
+                <th>
+                  Location
+                </th>
+                <th>
+                  Date
+                  </th>
+                 
+                  <th>
+                   Action
+                   </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let application of applications">
+                  <td>
+                    {{application.firstName}}  &nbsp; {{application.lastName}}
+                  </td>
+                  <td>
+                    {{application.phone}}
+                  </td>
+                  <td>
+                      {{application.email}}
+                  </td>
+                  <td>
+                      {{application.proffession}}
+                    </td>
+                    <td>
+                        {{application.jobType}}
+                    </td>
+                      
+                      <td>
+                          {{application.address}}, {{application.city}}, {{application.state}}, {{application.zip}} 
+                        </td>
+                       
+                        <td>
+                            {{application.date | date: 'medium'}}
+                          </td>
+                          
+                          <th>
+                           <button class="btn btn-primary" (click)="viewDocuments(application)" >View Application Documents</button>
+                           </th>
+                          
+
+              </tr>
+            </tbody>
+
+          </table>
+        </div>
+      </div>
+
+    </div>
+    <div class="">
+
+    </div>
+  </div>
+
+</div>

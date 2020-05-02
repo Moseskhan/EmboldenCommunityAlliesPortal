@@ -1,0 +1,112 @@
+
+/* You can add global styles to this file, and also import other style files */
+@import "scss/theme";
+@import "~@progress/kendo-theme-bootstrap/scss/all";
+@import "~bootstrap/scss/bootstrap";
+.form-group input{
+    width: 80%
+}
+.form-group textarea{
+width:100%
+}
+hr.style-eight {
+    overflow: visible; /* For IE */
+    padding: 0;
+    border: none;
+    border-top: medium double #333;
+    color: #333;
+    text-align: center;
+}
+hr.style-eight:after {
+    content: "§";
+    display: inline-block;
+    position: relative;
+    top: -0.7em;
+    font-size: 1.5em;
+    padding: 0 0.25em;
+    background: white;
+}
+hr.style-seven {
+    overflow: visible; /* For IE */
+    height: 30px;
+    border-style: solid;
+    border-color:green;
+    border-width: 1px 0 0 0;
+    border-radius: 20px;
+}
+hr.style-seven:before { /* Not really supposed to work, but does */
+    display: block;
+    content: "";
+    height: 30px;
+    margin-top: -31px;
+    border-style: solid;
+    border-color: green;
+    border-width: 0 0 1px 0;
+    border-radius: 20px;
+}
+.card-success{
+    border-color: green;
+}
+.one-line{
+    
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    // don’t forget that .block-with-text can’t be an inline element
+} 
+/* ===================================
+10. Inner - Section: page headline
+==================================== */
+
+#inner-headline{
+	background:white;
+	position:relative;
+	margin:0;
+	padding:0;
+	color:#fefefe;
+}
+
+
+#inner-headline .inner-heading h2 {
+	color:#fff;
+	margin:20px 0 0 0;
+}
+
+/* --- breadcrumbs --- */
+#inner-headline ul.breadcrumb {
+	margin:30px 0 0;
+	float:left;
+}
+
+#inner-headline ul.breadcrumb li {
+	margin-bottom:0;
+	padding-bottom:0;
+}
+#inner-headline ul.breadcrumb li {
+	font-size:13px;
+	color:#fff;
+	font-weight: 600;
+}
+
+#inner-headline ul.breadcrumb li i{
+	color:#fff;
+	
+}
+
+#inner-headline ul.breadcrumb li a {
+	color:#fff;
+	
+}
+
+ul.breadcrumb li a:hover {
+	text-decoration:none;
+}
+.breadcrumb {
+    background-color: #d9232d;
+    margin-bottom: 5px;
+}
+
+.breadcrumb {
+    border-left-color: #50a846;
+}
+
